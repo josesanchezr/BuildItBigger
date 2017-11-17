@@ -15,7 +15,6 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.udacity.gradle.backend.myApi.MyApi;
-import com.udacity.gradle.jokes.Joker;
 import com.udacity.gradle.libandroid.ShowMessageActivity;
 
 import java.io.IOException;
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             if (myApiService == null) {
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                         new AndroidJsonFactory(), null)
-                        .setRootUrl("http://localhost:8080/_ah/api/")
+                        .setRootUrl("http://10.0.2.2:8080/_ah/api/")
                         .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
                             @Override
                             public void initialize(AbstractGoogleClientRequest<?> request) throws IOException {
@@ -90,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Joker joke = new Joker();
             Intent intent = new Intent(getApplicationContext(), ShowMessageActivity.class);
-            intent.putExtra(ShowMessageActivity.TEXT_JOKE, joke.getJoke());
+            intent.putExtra(ShowMessageActivity.TEXT_JOKE, result);
             startActivity(intent);
             idlingResource.decrement();
         }
