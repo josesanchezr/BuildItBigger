@@ -42,7 +42,7 @@ public class MainActivityTest {
     public void asyncTask() {
         onView(withId(R.id.joke_button)).perform(click());
 
-        onView(withId(R.id.text_joke)).check(matches(withText("This is totally a funny joke....")));
+        onView(withId(R.id.text_joke)).check(matches(withText("This is totally a funny joke....+++")));
     }
 
 
