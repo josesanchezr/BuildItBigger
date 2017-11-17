@@ -13,7 +13,7 @@ public class ShowMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_message);
 
-        if (getIntent() != null) {
+        if (getIntent() != null && getIntent().hasExtra(TEXT_JOKE)) {
             String joke = getIntent().getStringExtra(TEXT_JOKE);
             TextView jokeTextView = (TextView) findViewById(R.id.text_joke);
             jokeTextView.setText(joke);
